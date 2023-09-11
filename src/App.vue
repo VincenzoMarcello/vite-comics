@@ -1,5 +1,19 @@
-<script></script>
+<script>
+import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
+import AppLineBlue from "./components/AppLineBlue.vue";
 
-<template></template>
+export default {
+  components: { AppHeader, AppMain, AppLineBlue },
+};
+</script>
 
-<style></style>
+<template>
+  <AppHeader />
+  <AppMain />
+  <AppLineBlue />
+</template>
+
+<style lang="scss">
+@use "./assets/styles/general.scss";
+</style>
