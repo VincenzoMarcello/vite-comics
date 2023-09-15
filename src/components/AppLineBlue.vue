@@ -1,8 +1,13 @@
 <script>
 export default {
+  methods: {
+    getImageUrl(name) {
+      return new URL(`../assets/${name}`, import.meta.url).href;
+    },
+  },
   data() {
     return {
-      LineLinks: [
+      lineLinks: [
         {
           image: "buy-comics-digital-comics.png",
           text: "DIGITAL COMICS",
@@ -24,12 +29,6 @@ export default {
           text: "DC POWER VISA",
         },
       ],
-
-      methods: {
-        getImageUrl(name) {
-          return new URL(`../assets/${name}`, import.meta.url).href;
-        },
-      },
     };
   },
 };
@@ -37,12 +36,14 @@ export default {
 
 <template>
   <div class="bg-line-blue">
-    <div class="container-links">
-      <div>
+    <div class="container d-flex justify-content-between align-items-center">
+      <div v-for="lineLink in lineLinks">
         <div>
-          <img :src="getImageUrl(LineLinks.image)" alt="" />
+          <img :src="getImageUrl(lineLink.image)" alt="" class="img-line" />
         </div>
-        <div></div>
+        <div>
+          <p>{{ lineLink.text }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -52,10 +53,9 @@ export default {
 .bg-line-blue {
   min-height: 150px;
   background-color: #0282f9;
-
-  .container-links {
-    max-width: 1200px;
-    margin: auto;
+  .img-line {
+    width: 60px;
+    aspect-ratio: 1;
   }
 }
 </style>
